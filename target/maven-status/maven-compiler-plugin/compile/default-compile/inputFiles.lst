@@ -1,0 +1,13 @@
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Entity\Flight.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Dao\Dao.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Dao\TicketDao.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Servlet\FlightServlet.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Dto\FlightDto.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Utils\PropertiesUtil.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Entity\Ticket.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Service\FlightService.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\JDBCRunner.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Exception\DaoException.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Utils\ConnectionManager.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Dao\FlightDao.java
+C:\Users\artei\IdeaProjects\jdbcStart\src\main\java\by\northdakota\Entity\FlightStatus.java
