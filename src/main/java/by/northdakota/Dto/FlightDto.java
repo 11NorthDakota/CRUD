@@ -1,4 +1,12 @@
 package by.northdakota.Dto;
-public record FlightDto(Long id,String description){
 
+import lombok.*;
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class FlightDto{
+    private Long id;
+    private String description;
 }

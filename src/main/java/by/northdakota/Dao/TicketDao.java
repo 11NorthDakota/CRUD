@@ -14,6 +14,7 @@ import java.util.Optional;
 
 public class TicketDao implements Dao<Long,Ticket>{
     private final static TicketDao INSTANCE = new TicketDao();
+
     private final static String SAVE_SQL = """
             INSERT INTO ticket(passenger_no, passenger_name, flight_id, seat_no, cost)
             values (?,?,?,?,?)
@@ -33,7 +34,7 @@ public class TicketDao implements Dao<Long,Ticket>{
             where id = ?;
             """;
 
-    public final static String UPDATE_SQL = """
+    private final static String UPDATE_SQL = """
             UPDATE ticket
             SET passenger_no = ?,
                 passenger_name = ?,
@@ -41,6 +42,13 @@ public class TicketDao implements Dao<Long,Ticket>{
                 seat_no = ?,
                 cost = ?
             where id = ?;
+            """;
+
+    private final static String FIND_BY_FLIGHT_SQL = """
+            select t.id,t.passenger_no,t.passenger_name,t.flight_id,t.seat_no,t.cost
+            from ticket as t
+            join flight as f on f.id = t.flight_id
+            where f.id = ?;
             """;
 
     public static TicketDao getInstance() {
@@ -79,6 +87,26 @@ public class TicketDao implements Dao<Long,Ticket>{
             throw new DaoException(e);
         }
     }
+
+    public List<Ticket> findAllByFlightId(Long flightId) {
+        List<Ticket> tickets = new ArrayList<>();
+        try (Connection connection = ConnectionManager.getConnection();
+             PreparedStatement statement = connection
+                     .prepareStatement(FIND_BY_FLIGHT_SQL)
+        ) {
+            statement.setLong(1, flightId);
+            var result = statement.executeQuery();
+            while(result.next()){
+                tickets.add(
+                        buildTicket(result)
+                );
+            }
+            return tickets;
+        } catch (SQLException e) {
+            throw new DaoException(e);
+        }
+    }
+
     @Override
     public boolean update(Ticket ticket) {
         try (Connection connection = ConnectionManager.getConnection();

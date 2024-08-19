@@ -18,8 +18,9 @@ public class ConnectionManager {
 
     static {
         try {
+            loadDriver();
             initConnectionPool();
-        } catch (SQLException e) {
+        } catch (SQLException | ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
     }
@@ -55,5 +56,9 @@ public class ConnectionManager {
                 PropertiesUtil.get(USER_KEY),
                 PropertiesUtil.get(PASSWORD_KEY)
         );
+    }
+
+    private static void loadDriver() throws ClassNotFoundException {
+        Class.forName("org.postgresql.Driver");
     }
 }
